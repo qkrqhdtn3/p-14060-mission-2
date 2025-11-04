@@ -10,9 +10,7 @@ public class Main {
     public static void main(String[] args) {
         // 작가명(author)와 명언내용(content)에는 특수문자를 입력하지 않는다
         String author;
-//        String[] authorArr = new String[50];
         String content;
-//        String[] contentArr = new String[50];
         int contentArrInd = 0;
         int lastId;
         int deleteFileNum;
@@ -44,21 +42,12 @@ public class Main {
                 return;
             }
             else if (cmd.compareTo("등록") == 0) {
-/*                System.out.print("명언 : ");
-                content = sc.nextLine();
-                contentArr[contentArrInd] = content;
-                System.out.print("작가 : ");
-                author = sc.nextLine();
-                authorArr[contentArrInd++] = author;
-                System.out.println(contentArrInd + "번 명언이 등록되었습니다.");*/
                 lastId = getLastId() + 1;
                 setLastId(lastId);
                 System.out.print("명언 : ");
                 content = sc.nextLine();
-//                contentArr[lastId] = content;
                 System.out.print("작가 : ");
                 author = sc.nextLine();
-//                authorArr[lastId] = author;
                 insertFile(lastId, author, content);
                 System.out.println(lastId + "번 명언이 등록되었습니다.");
             }
@@ -69,9 +58,6 @@ public class Main {
                 }
             }
             else if(cmd.substring(0, 2).compareTo("삭제") == 0){
-//                tempStr = cmd.substring(2, cmd.length());
-//                if (cmd.substring(2, 6).compareTo("?id=") == 0) {
-//                }
                 deleteFileNum = Integer.parseInt(cmd.substring(6, cmd.length()));
                 File file = new File("db/wiseSaying/" + deleteFileNum + ".json");
                 if(!file.exists()){
@@ -176,7 +162,6 @@ public class Main {
         } catch(Exception e){
             System.out.println(e);
         }
-//        File file = new File("db/wiseSaying/" + fileNum + ".json");
     }
     public static void readFile(int fileNum, String author, String content){
         try {
@@ -193,7 +178,6 @@ public class Main {
                 s += (char) i;
             }
             fileInputStream.close();
-//            return Integer.parseInt(s);
         } catch(Exception e) {
             System.out.println(e);
 //            return -1;
@@ -239,24 +223,6 @@ public class Main {
         return null;
     }
     public static void readAllFile(){
-//        File file = new File("db/wiseSaying/");
-//        if(file.isDirectory()){
-//            String[] fileNameList = file.list();
-//            String target;
-//            int targetInd;
-//            String targetId;
-//            target = ".json";
-//            Map<String,String> map = new HashMap<>();
-//            for(int i = 0 ; i < fileNameList.length; i++){
-//                targetInd = fileNameList[i].indexOf(target);
-//                if(targetInd == -1){
-//                    continue;
-//                }
-//                targetId = fileNameList[i].substring(0, targetInd);
-//                map = getJsonToMap(Integer.parseInt(targetId));
-//                System.out.println(map.get("id") + " / " + map.get("author") + " / " + map.get("content"));
-//            }
-//        }
         Map<String,String>[] mapArr = makeMapArr();
         for(int i = 0 ; i < mapArr.length ; i++){
             if(mapArr[i] == null){
